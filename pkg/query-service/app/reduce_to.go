@@ -19,7 +19,7 @@ func applyReduceTo(result []*v3.Result, queryRangeParams *v3.QueryRangeParamsV3)
 		// reduceTo is only applicable for metrics data source
 		// and for table and value panels
 		if builderQueries[result.QueryName] != nil && (builderQueries[result.QueryName].DataSource == v3.DataSourceMetrics &&
-			(queryRangeParams.CompositeQuery.PanelType == v3.PanelTypeTable || queryRangeParams.CompositeQuery.PanelType == v3.PanelTypeValue)) {
+			(queryRangeParams.CompositeQuery.PanelType == v3.PanelTypeTable || queryRangeParams.CompositeQuery.PanelType == v3.PanelTypeValue)) || queryRangeParams.CompositeQuery.PanelType == v3.PanelTypeHistogram {
 			reduceTo := builderQueries[result.QueryName].ReduceTo
 
 			switch reduceTo {
