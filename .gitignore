@@ -65,3 +65,4 @@ e2e/.auth
 
 # go
 vendor/
+**/main/**
