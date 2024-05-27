@@ -34,6 +34,9 @@ receivers:
       #   endpoint: 0.0.0.0:6831
       # thrift_binary:
       #   endpoint: 0.0.0.0:6832
+  httplogreceiver/json:
+    endpoint: 0.0.0.0:8082
+    source: json
   hostmetrics:
     collection_interval: 30s
     scrapers:
@@ -163,6 +166,6 @@ service:
       processors: [batch]
       exporters: [clickhousemetricswrite/prometheus]
     logs:
-      receivers: [otlp, tcplog/docker]
+      receivers: [otlp, tcplog/docker,httplogreceiver/json]
       processors: [batch]
       exporters: [clickhouselogsexporter]
